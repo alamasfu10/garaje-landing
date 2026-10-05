@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ── Neutrals ──────────────────────────────────────────── */
+  --neutral-canvas:   #F1F1EE;
+  --neutral-paper:    #FFFFFF;
+  --neutral-mist:     #E8E8E5;
+  --neutral-soft:     #DDDDD9;
+  --neutral-mute:     #B8B8B3;
+  --neutral-quiet:    #8A8A86;
+  --neutral-ink:      #0A0A0A;
+  --neutral-void:     #000000;
+
+  /* ── Accents ───────────────────────────────────────────── */
+  --accent-sage:      #B8D0CA;
+  --accent-sage-soft: #D6E2DE;
+  --accent-navy:      #0F2C3A;
+
+  /* ── Status ────────────────────────────────────────────── */
+  --status-live:      #22C55E;
+  --status-done:      #9A9A95;
+
+  /* ── Scrims ────────────────────────────────────────────── */
+  --scrim-ink-08:     rgba(10,10,10,0.08);
+  --scrim-ink-12:     rgba(10,10,10,0.12);
+  --scrim-paper-08:   rgba(255,255,255,0.08);
+  --scrim-paper-16:   rgba(255,255,255,0.16);
+
+  /* ── Semantic aliases ──────────────────────────────────── */
+  --surface-page:       var(--neutral-canvas);
+  --surface-card:       var(--neutral-paper);
+  --surface-pill:       var(--neutral-mist);
+  --surface-inverse:    var(--neutral-void);
+
+  --text-strong:        var(--neutral-ink);
+  --text-body:          var(--neutral-ink);
+  --text-quiet:         var(--neutral-quiet);
+  --text-mute:          var(--neutral-mute);
+  --text-inverse:       var(--neutral-paper);
+  --text-inverse-quiet: rgba(255,255,255,0.72);
+
+  --action-primary-bg:   var(--neutral-ink);
+  --action-primary-fg:   var(--neutral-paper);
+  --action-secondary-bg: var(--neutral-mist);
+  --action-secondary-fg: var(--neutral-ink);
+  --action-inverse-bg:   var(--neutral-paper);
+  --action-inverse-fg:   var(--neutral-ink);
+
+  --border-hairline:     var(--scrim-ink-08);
+  --border-soft:         var(--neutral-soft);
+
+  /* ── Typography ────────────────────────────────────────── */
+  --font-sans:    var(--font-inter), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+
+  /* ── Radii ─────────────────────────────────────────────── */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-pill: 999px;
+  --radius-input: 0;
+
+  /* ── Shadows ───────────────────────────────────────────── */
+  --shadow-float: 0 24px 60px -20px rgba(10,10,10,0.18);
+  --shadow-focus: 0 0 0 3px rgba(10,10,10,0.16);
+
+  /* ── Layout ────────────────────────────────────────────── */
+  --page-gutter: clamp(20px, 5vw, 64px);
+
+  /* ── Motion ────────────────────────────────────────────── */
+  --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-quick: 160ms;
+  --dur-base:  240ms;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+
+button { font-family: inherit; }
+
+input, select, textarea { font-family: inherit; color: inherit; }
+
+a { color: inherit; }
+
+::selection {
+  background: var(--neutral-ink);
+  color: var(--neutral-paper);
+}
+
+/* ── Page content wrapper ─────────────────────────────────── */
+.page-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+/* ── Floating-label field ─────────────────────────────────── */
+.fl-field {
+  position: relative;
+  padding-top: 20px;
+}
+
+.fl-field__label {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  font-size: 16px;
+  line-height: 1;
+  pointer-events: none;
+  transition:
+    top var(--dur-quick) var(--ease-out),
+    font-size var(--dur-quick) var(--ease-out),
+    letter-spacing var(--dur-quick) var(--ease-out),
+    color var(--dur-quick) var(--ease-out);
+}
+
+.fl-field__label--float {
+  top: 0;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fl-field__input {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 6px 0 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  outline: none;
+  appearance: none;
+}
+
+.fl-field__input:focus {
+  outline: none;
+}
