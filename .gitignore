@@ -8,3 +8,4 @@ dist/
 secrets.txt
 test-results/
 playwright-report/
+*.tsbuildinfo
